@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Temperatura</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e2f;
+      color: #f0f0f0;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #f9d342;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+    input {
+      width: 200px;
+    }
+    button {
+      background-color: #3e8ed0;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #326ea8;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #f0f0f0;
+    }
+    .icons {
+      margin: 20px 0;
+    }
+    .icons img {
+      width: 80px;
+      margin: 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌡️ Conversor de Temperatura 🌡️</h1>
+
+  <div class="icons">
+    <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Sol (Celsius)">
+    <img src="https://cdn-icons-png.flaticon.com/512/414/414974.png" alt="Neve (Fahrenheit)">
+  </div>
+
+  <input type="number" id="temp" placeholder="Digite a temperatura">
+
+  <br>
+
+  <button onclick="converterParaCelsius()">Converter para Celsius</button>
+  <button onclick="converterParaFahrenheit()">Converter para Fahrenheit</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function converterParaCelsius() {
+      const fahrenheit = parseFloat(document.getElementById("temp").value);
+      if (isNaN(fahrenheit)) {
+        document.getElementById("resultado").innerText = "Por favor, insira um número válido.";
+        return;
+      }
+      const celsius = (fahrenheit - 32) * 5 / 9;
+      document.getElementById("resultado").innerText = `${fahrenheit}°F = ${celsius.toFixed(2)}°C`;
+    }
+
+    function converterParaFahrenheit() {
+      const celsius = parseFloat(document.getElementById("temp").value);
+      if (isNaN(celsius)) {
+        document.getElementById("resultado").innerText = "Por favor, insira um número válido.";
+        return;
+      }
+      const fahrenheit = (celsius * 9 / 5) + 32;
+      document.getElementById("resultado").innerText = `${celsius}°C = ${fahrenheit.toFixed(2)}°F`;
+    }
+  </script>
+
+</body>
+</html>
